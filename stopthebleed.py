@@ -24,7 +24,7 @@ def lambda_handler(event, context):
     function.
     """
     
-    if (event['session']['application']['applicationId'] != "amzn1.ask.skill.b359eb23-9a41-4963-a6d8-813f188c8943"):
+    if (event['session']['application']['applicationId'] != ""):
         raise ValueError("Invalid Application ID")
 
     if event['session']['new']:
@@ -133,10 +133,10 @@ def get_help(intent, session):
     session_attributes = session.get('attributes', {})
     should_end_session = False
     if session_attributes['flag'] == 2: #it's gone through once already
-        # account_sid = "AC25112aeeae78fe8aa6f8bf887da63667"
-        # auth_token = "4eb512fdd7bfb7b547c09a33e75e92b1"
+        # account_sid = ""
+        # auth_token = ""
         # client = TwilioRestClient(account_sid, auth_token)
-        # message = client.messages.create(to="4252994583", from_="+12068662338", body="%s at %s" % (session_attributes["emergencyDescription"], intent['slots']['ResponseGetHelpRequest']['value']))
+        # message = client.messages.create(to="", from_="", body="%s at %s" % (session_attributes["emergencyDescription"], intent['slots']['ResponseGetHelpRequest']['value']))
         speech_output = "I have alerted emergency responses with your location %s. Are you safe?" % intent['slots']['ResponseGetHelpRequest']['value']
         reprompt_text = "Please tell me if you are safe."
         session_attributes["prevQuestion"] = speech_output
